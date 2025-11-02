@@ -1,0 +1,208 @@
+1. # Define a class named Car
+class Car:
+    # This function runs automatically when we create a new Car object
+    def __init__(self, make, model, year):
+        # Store the values inside the object
+        self.make = make
+        self.model = model
+        self.year = year
+
+    # A method (function inside class) to show car details
+    def display_details(self):
+        print("Car Details:")
+        print("Make:", self.make)
+        print("Model:", self.model)
+        print("Year:", self.year)
+
+
+# Example
+my_car = Car("Toyota", "Corolla", 2020)
+
+# Calling the method to show the car details
+my_car.display_details()
+
+
+2.# Define a class named Rectangle
+class Rectangle:
+    # Constructor to initialize the length and breadth of the rectangle
+    def __init__(self, length, breadth):
+        self.length = length      
+        self.breadth = breadth    
+
+    # Method to calculate the area of the rectangle
+    def calculate_area(self):
+        area = self.length * self.breadth
+        return area
+
+    # Method to calculate the perimeter of the rectangle
+    def calculate_perimeter(self):
+        perimeter = 2 * (self.length + self.breadth)
+        return perimeter
+
+
+# Create an object of the Rectangle class
+rect1 = Rectangle(10, 5)
+
+# Calculate area and perimeter using the class methods
+area = rect1.calculate_area()
+perimeter = rect1.calculate_perimeter()
+
+# Display 
+print("Rectangle Details:")
+print("Length:", rect1.length)
+print("Breadth:", rect1.breadth)
+print("Area:", area)
+print("Perimeter:", perimeter)
+
+
+3. # Base class 
+class Animal:
+    # Method to represent a general animal sound
+    def speak(self):
+        print("The animal makes a sound.")
+
+# Child class that inherits from Animal
+class Dog(Animal):
+    # Overriding the speak() method of the parent class
+    def speak(self):
+        print("Woof!")
+# Create an object of the derived class Dog
+my_dog = Dog()
+
+# Call the speak() method
+my_dog.speak()
+
+
+4. # This program shows Encapsulation using a class called Employee
+# Create a class named Employee
+class Employee:
+    # This runs when we make a new Employee object
+    def __init__(self, salary):
+        # __salary is a private variable (hidden from outside)
+        self.__salary = salary
+
+    # This function (getter) is used to see the salary
+    def get_salary(self):
+        return self.__salary
+
+    # This function (setter) is used to change the salary
+    def set_salary(self, new_salary):
+        # Check if new salary is positive
+        if new_salary > 0:
+            self.__salary = new_salary
+        else:
+            print("Salary must be a positive number.")
+
+# Make an Employee object with salary 50000
+emp1 = Employee(50000)
+
+# Try to see the private salary directly (this will not work)
+try:
+    print(emp1.__salary)  #Error because __salary is private
+except AttributeError:
+    print("You cannot access __salary directly!")
+
+# See the salary using getter method
+print("Current Salary:", emp1.get_salary())
+
+# Change the salary using setter method
+emp1.set_salary(60000)
+
+# Show the updated salary
+print("Updated Salary:", emp1.get_salary())
+
+
+5. # This program shows Multiple Inheritance in Python
+# There are two parent classes (A and B) and one child class (C)
+# First parent class
+class A:
+    # greet() method in class A
+    def greet(self):
+        print("Hello from class A!")
+
+# Second parent class
+class B:
+    # greet() method in class B
+    def greet(self):
+        print("Hello from class B!")
+
+# Child class that inherits from both A and B
+class C(A, B):
+    pass  # 'pass' means no new code here, it just inherits everything
+
+# Create an object of class C
+obj = C()
+
+# Call the greet() method
+obj.greet()
+
+
+6.# This program demonstrates Abstract Classes in Python
+# Shape is an abstract class with an abstract method area()
+# Circle and Square inherit from Shape and implement area()
+
+from abc import ABC, abstractmethod  # Import ABC module for abstract classes
+import math
+
+# Abstract class
+class Shape(ABC):
+    # Abstract method that must be implemented by subclasses
+    @abstractmethod
+    def area(self):
+        pass  # No implementation here
+
+# Circle class inherits from Shape
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius  # Store the radius
+
+    # Override area method for Circle
+    def area(self):
+        return math.pi * self.radius ** 2
+
+# Square class inherits from Shape
+class Square(Shape):
+    def __init__(self, side):
+        self.side = side  # Store the side length
+
+    # Override area method for Square
+    def area(self):
+        return self.side * self.side
+
+# Create objects of Circle and Square
+circle1 = Circle(5)  # Radius = 5
+square1 = Square(4)  # Side = 4
+
+# Print areas
+print("Area of Circle:", circle1.area())
+print("Area of Square:", square1.area())
+
+
+7. # This program demonstrates the use of class variables in Python
+# It counts how many objects of the Counter class have been created
+
+# Define the Counter class
+class Counter:
+    # Class variable shared by all objects
+    count = 0
+
+    # Constructor runs every time a new object is created
+    def __init__(self):
+        # Increment the class variable count by 1
+        Counter.count += 1
+
+    # Method to display current count
+    @classmethod
+    def display_count(cls):
+        print("Number of Counter objects created:", cls.count)
+
+# Create multiple objects
+c1 = Counter()
+c2 = Counter()
+c3 = Counter()
+
+# Display the count using the class method
+Counter.display_count()
+
+
+
