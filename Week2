@@ -1,0 +1,79 @@
+1.
+prices = [25, 60, 45, 100, 75, 30, 55]
+
+#Filtering out the products with a price below $50
+filtered_prices = list(filter(lambda price: price >= 50, prices))
+
+#Applying a 10% discount to the remaining price
+discounted_prices = list(map(lambda price: price * 0.9, filtered_prices))
+
+print("Original prices:", prices)
+print("Filtered prices (>= $50):", filtered_prices)
+print("Discounted prices (10% off):", discounted_prices)
+
+2.
+work_hours = [35, 42, 38, 50, 44, 30, 60]
+
+#Filtering out employees whose working hours are less than 40 hours
+filtered_hours = list(filter(lambda h: h >= 40, work_hours))
+
+# Finding out the overtime hours
+overtime_hours = list(map(lambda h: h - 40, filtered_hours))
+
+print("Original work hours:", work_hours)
+print("Filtered (>= 40 hours):", filtered_hours)
+print("Overtime hours:", overtime_hours)
+
+3.
+feedback_list = [
+    "Great service!",
+    "I love the product quality and fast delivery.",
+    "Okay.",
+    "Customer support was invaluable.",
+    "Nice!",
+    "The website is easy to use and navigate."
+]
+
+# Filtering out the feedback messages which is shorter than 20 characters
+filtered_feedback = list(filter(lambda msg: len(msg) >= 20, feedback_list))
+
+#Converting the remaining feedback messages to lowercase
+lowercase_feedback = list(map(lambda msg: msg.lower(), filtered_feedback))
+
+print("Original feedback list:")
+print(feedback_list)
+print("\nFiltered feedback (>= 20 characters):")
+print(filtered_feedback)
+print("\nLowercased feedback:")
+print(lowercase_feedback)
+
+4.
+#Initial salary
+salaries = {"John": 55000, "Jane": 72000, "Doe": 48000, "Alice": 95000, "Bob": 61000}
+# filtering out the people having a salary less than 60000
+high_earners = dict(filter(lambda x: x[1] >= 60000, salaries.items()))
+#raising the salary of filtered people by 5%
+raised_salaries = dict(map(lambda x: (x[0], x[1] * 1.05), high_earners.items()))
+print("Salaries after 5% raise for high earners:", raised_salaries) 
+
+5.
+#grades received
+scores = [45, 78, 92, 56, 67, 34, 89, 73, 50, 81]
+#filtering out the passed and failed students
+passing_scores = list(filter(lambda x: x >= 50, scores))
+#tarnslating the scores to grades
+def score_to_grade(score):
+    if score >= 90:
+        return 'A'
+    elif score >= 80:
+        return 'B'
+    elif score >= 70:
+        return 'C'
+    elif score >= 60:
+        return 'D'
+    else:
+        return 'E'
+letter_grades = list(map(score_to_grade, passing_scores))
+print("Letter grades for passing scores:", letter_grades)
+
+
